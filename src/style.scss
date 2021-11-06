@@ -95,6 +95,10 @@ header {
       box-sizing: border-box;
       border-radius: 17px;
       margin-left: 27px;
+      @media screen and (max-width: 800px) {
+        margin-left: 12px;
+      }
+
       .logoText {
         position: absolute;
         bottom: 0;
@@ -122,6 +126,7 @@ header {
         width: 20%;
         height: 50%;
         font-size: 12px;
+        margin-left: 12px;
       }
     }
   }
@@ -160,7 +165,7 @@ header {
   position: absolute;
   width: 51px;
   height: 30px;
-  top: 1%;
+  top: 0.5%;
   right: 4%;
   z-index: 1502;
 
@@ -203,10 +208,10 @@ header {
 }
 
 .mobileMenu.open {
-  top: 5.5%;
+  top: 6.5%;
   right: 8%;
-  animation: openMenu2 0.5s;
-  animation-delay: 0.4s;
+  animation: openMenu2 0.1s;
+  animation-delay: 0.12s;
   animation-fill-mode: backwards;
   .line {
     background-color: transparent;
@@ -230,7 +235,7 @@ header {
   z-index: 1501;
   opacity: 0.4;
 
-  animation: openMenu1 0.2s;
+  animation: openMenu1 0.1s;
 }
 
 /* Animation for the backdrop */
@@ -262,16 +267,16 @@ header {
   margin-top: 5%;
   margin-left: 5%;
 
-  animation: openMenu2 0.5s;
-  animation-delay: 0.2s;
+  animation: openMenu2 0.1s;
+  animation-delay: 0.12s;
   animation-fill-mode: backwards;
   a {
     color: white;
     font-size: 36px;
     font-weight: 700;
-    padding: 20px;
+    padding: 35px;
     &:nth-child(1) {
-      margin-top: 50%;
+      margin-top: 30%;
     }
   }
 }
@@ -281,9 +286,11 @@ header {
 @keyframes openMenu2 {
   0% {
     opacity: 0;
+    transform: scale(0.1, 0.1);
   }
   100% {
     opacity: 1;
+    transform: scale(1, 1);
   }
 }
 
