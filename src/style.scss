@@ -1,0 +1,757 @@
+/* 
+ *1. Table of content
+ *2. Variables
+ *3. Custom Fonts
+ *4. Universal styling
+ *5. Color styling for the buttons
+ *6. Header and navigation
+ *7. Main picture and its buttons
+ *8. Testimonial sektion 
+ *9. Popular Challenges sektion
+ *10. Full story sektion
+ *11. Bottom sektion
+ *12. footer 
+
+*/
+
+/* 2. Variables */
+$main-color: #e3170a;
+
+$secondary-color: #36769d;
+
+$third-color: #8acfe5;
+
+$black-color: #011827;
+
+$gray-color: #b6bdb5;
+
+/* 3. Custom Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Monofett&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+/* 4. Universal styling that removes margins etc */
+* {
+  border: 0;
+  padding: 0;
+  margin: 0;
+
+  font-family: "Roboto", "sans-serif";
+}
+
+/* removes dekoration from the a links */
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+}
+
+/* changes the max height when the mobile navbar is open */
+.container.open {
+  max-height: 100vh;
+  overflow: hidden;
+}
+
+/* 5. color styling for the buttons*/
+.primary-button {
+  background-color: $main-color;
+  color: white;
+}
+
+.secondary-button {
+  background: $third-color;
+  color: black;
+  font-weight: bold;
+}
+
+.primary-dark-button {
+  background-color: $black-color;
+  color: $third-color;
+}
+
+/* 6. styling for the header and navigation menu  */
+
+header {
+  width: 100%;
+  height: 216px;
+
+  background-color: $black-color;
+
+  .headerTop-container {
+    display: flex;
+    margin-top: 5px;
+    .logo-container {
+      position: relative;
+      margin-top: 26px;
+      width: 128px;
+      height: 82px;
+
+      border: 6px solid #ffffff;
+      box-sizing: border-box;
+      border-radius: 17px;
+      margin-left: 27px;
+      .logoText {
+        position: absolute;
+        bottom: 0;
+        left: 5px;
+        width: 70px;
+        height: 45px;
+        font-family: "Monofett", "cusive";
+        font-style: normal;
+        font-weight: normal;
+        font-size: 40px;
+        line-height: 45px;
+        text-align: center;
+        color: #ffffff;
+      }
+    }
+
+    .headerText-container {
+      margin-top: 60px;
+      margin-left: 19px;
+      color: #ffffff;
+      font-size: 20px;
+
+      @media screen and (max-width: 800px) {
+        margin-top: 26px;
+        width: 20%;
+        height: 50%;
+        font-size: 12px;
+      }
+    }
+  }
+
+  nav {
+    text-align: center;
+    top: 25%;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin: 0% 20%;
+
+    @media screen and (max-width: 800px) {
+      display: none;
+    }
+
+    a {
+      color: white;
+      font-size: 24px;
+      &:hover {
+        color: $main-color;
+      }
+    }
+    a:nth-child(4) {
+      color: $third-color;
+      &:hover {
+        color: $main-color;
+      }
+    }
+  }
+}
+
+/* Mobil view menu and modal styling */
+.mobileMenu {
+  background-color: transparent;
+  position: absolute;
+  width: 51px;
+  height: 30px;
+  top: 1%;
+  right: 4%;
+  z-index: 1502;
+
+  @media screen and (min-width: 800px) {
+    display: none;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+  .line {
+    background-color: white;
+    position: relative;
+    display: inline-block;
+    top: 1%;
+    right: 1%;
+    height: 6px;
+    width: 51px;
+    border-radius: 15px;
+
+    &:before {
+      content: "";
+      position: absolute;
+      width: inherit;
+      height: inherit;
+      background-color: white;
+      border-radius: inherit;
+      top: -12px;
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      width: inherit;
+      height: inherit;
+      background-color: white;
+      border-radius: inherit;
+      top: 12px;
+    }
+  }
+}
+
+.mobileMenu.open {
+  top: 5.5%;
+  right: 8%;
+  animation: openMenu2 0.5s;
+  animation-delay: 0.4s;
+  animation-fill-mode: backwards;
+  .line {
+    background-color: transparent;
+
+    &:before {
+      top: 0;
+      transform: rotate(135deg);
+    }
+    &:after {
+      top: 0;
+      transform: rotate(-135deg);
+    }
+  }
+}
+
+.mobileBackdrop.open {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  z-index: 1501;
+  opacity: 0.4;
+
+  animation: openMenu1 0.2s;
+}
+
+/* Animation for the backdrop */
+
+@keyframes openMenu1 {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.4;
+  }
+}
+
+.mobileModal {
+  display: none;
+}
+
+.mobileModal.open {
+  display: flex;
+  position: absolute;
+  margin: auto;
+  width: 90%;
+  height: 95vh;
+  background-color: $black-color;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1501;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
+  margin-top: 5%;
+  margin-left: 5%;
+
+  animation: openMenu2 0.5s;
+  animation-delay: 0.2s;
+  animation-fill-mode: backwards;
+  a {
+    color: white;
+    font-size: 36px;
+    font-weight: 700;
+    padding: 20px;
+    &:nth-child(1) {
+      margin-top: 50%;
+    }
+  }
+}
+
+/* Animation for the modal */
+
+@keyframes openMenu2 {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* 7. Styling for the main picture on the site and the buttons beneath it */
+
+.main-picture {
+  background-image: url(https://nw84.github.io/Esc-Hacker-Escape-Rooms-/img/hacker.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 468px;
+  width: 100%;
+  @media screen and (max-width: 800px) {
+    height: 274px;
+    margin-top: -70px;
+  }
+}
+
+.main-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: -30px;
+  margin-bottom: 30px;
+
+  /* styling for the mobile version och here i change to align items center and flex direction column on the container and order 1 etc on the first nth child, so that the on-site challenges button is displayed first */
+
+  @media screen and (max-width: 800px) {
+    margin-top: 20px;
+    align-items: center;
+    flex-direction: column;
+  }
+  .main-button {
+    padding: 10px 25px;
+    margin: 10px;
+    border-radius: 3%;
+    font-size: 16px;
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.1, 1.1);
+    }
+
+    @media screen and (max-width: 800px) {
+      margin: 0;
+
+      &:nth-child(1) {
+        order: 1;
+        background-color: white;
+        color: $secondary-color;
+        text-decoration: underline;
+        font-size: 10px;
+      }
+      &:nth-child(2) {
+        float: left;
+      }
+    }
+  }
+}
+
+/* 8. Styling for the testimonial sektion */
+.testimonial-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .testimonial {
+    width: 618px;
+    height: 139px;
+    display: flex;
+    padding: 25px;
+    font-style: italic;
+    font-size: 24px;
+    @media (max-width: 1480px) {
+      font-size: 20px;
+    }
+    /*  Removes the first testimonial on the mobile version   */
+    @media screen and (max-width: 800px) {
+      &:nth-child(1) {
+        display: none;
+      }
+    }
+
+    .testimonial-bild {
+      background-image: url(https://nw84.github.io/Esc-Hacker-Escape-Rooms-/img/johnDoo.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      border-radius: 50%;
+      height: 116px;
+      width: 274px;
+      margin-right: 15px;
+      margin-bottom: 30px;
+      @media (max-width: 1480px) {
+        height: 98px;
+        width: 232px;
+      }
+    }
+
+    .quote-author {
+      font-size: 16px;
+
+      @media (max-width: 1480px) {
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+/* 9. Styling for the Popular Challenges sektion */
+
+.popular-container {
+  margin-top: 30px;
+  @media screen and (max-width: 800px) {
+    position: relative;
+    overflow-x: hidden;
+    height: 70vh;
+    margin-bottom: 60px;
+  }
+  @media screen and (max-height: 700px) and (max-width: 800px) {
+    margin-bottom: 170px;
+  }
+
+  .popularHeader-container {
+    text-align: center;
+  }
+
+  .popular-container-inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+
+    .popularCard {
+      width: 446px;
+      height: auto;
+      margin-left: 2%;
+      border-radius: 8px;
+      box-shadow: 0 0px 5px rgba(104, 104, 104, 0.8);
+
+      &:nth-child(3) {
+        margin-right: 2%;
+      }
+
+      @media (max-width: 1280px) {
+        width: 363px;
+      }
+
+      @media screen and (max-width: 800px) {
+        width: 80%;
+        &:nth-child(2) {
+          position: absolute;
+          left: 94%;
+        }
+        &:nth-child(3) {
+          display: none;
+        }
+      }
+      .popularBild {
+        background-image: url(https://nw84.github.io/Esc-Hacker-Escape-Rooms-/img/hacker.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 100%;
+        height: 20vh;
+        width: 100%;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+      }
+
+      .popularTopText {
+        margin-left: 10px;
+        margin-top: 10px;
+      }
+
+      .popularRating-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        @media screen and (max-width: 800px) {
+          justify-content: left;
+        }
+
+        .popularRating {
+          color: $main-color;
+          margin-left: 10px;
+          @media screen and (max-width: 800px) {
+            margin-right: 15px;
+          }
+        }
+        .popularRatingText {
+          font-size: 1px;
+          margin-right: 10px;
+          @media screen and (max-width: 800px) {
+            font-size: 10px;
+          }
+        }
+      }
+
+      .popularBottomText {
+        margin-top: 15px;
+        margin-left: 10px;
+        font-size: 12px;
+        @media (max-width: 1280px) {
+          font-size: 10px;
+        }
+        @media screen and (max-width: 800px) {
+          font-size: 12px;
+        }
+      }
+      .popularButton {
+        padding: 5px 15px;
+        margin: 10px;
+        border-radius: 3%;
+        float: right;
+
+        &:hover {
+          background-color: white;
+          color: #4040a1;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+/* 10. Styling for the Fullstory sektion */
+
+.fullStory-container {
+  margin-top: 20px;
+
+  .fullStory-button-container {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+
+    /* styling for the mobile version och here i change to align items center and flex direction column on the container and order 1 etc on the first nth child, so that the on-site challenges button is displayed first */
+
+    @media screen and (max-width: 800px) {
+      margin-top: -160px;
+      align-items: center;
+      flex-direction: column;
+    }
+    .fullStory-button {
+      padding: 10px 25px;
+      margin: 10px;
+      border-radius: 3%;
+      font-size: 16px;
+
+      &:hover {
+        cursor: pointer;
+        transform: scale(1.1, 1.1);
+      }
+
+      @media screen and (max-width: 800px) {
+        margin: 0;
+
+        &:nth-child(1) {
+          order: 1;
+          background-color: white;
+          color: $secondary-color;
+          text-decoration: underline;
+          font-size: 10px;
+        }
+        &:nth-child(2) {
+          float: left;
+        }
+      }
+    }
+  }
+  .fullStory-inner-container {
+    display: flex;
+    height: 500px;
+    margin-top: 40px;
+
+    background-color: $black-color;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .middle-button {
+      padding: 5px 15px;
+      margin: 25px;
+      border-radius: 3%;
+      border: 1px solid #8acfe6;
+      float: left;
+    }
+
+    .middle-button:hover {
+      cursor: pointer;
+      transform: scale(1.1, 1.1);
+    }
+
+    .fullStoryText {
+      margin-top: 20px;
+      width: 60%;
+      color: #ffffff;
+      font-size: 24px;
+      @media screen and (max-width: 800px) {
+        width: 90%;
+      }
+    }
+  }
+}
+
+/* 11. Styling for the bottomSektion */
+.bottomSektion {
+  display: flex;
+
+  @media screen and (max-width: 800px) {
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .leftPicture {
+    background-image: url(https://nw84.github.io/Esc-Hacker-Escape-Rooms-/img/friends.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 460px;
+    width: 50%;
+    @media screen and (max-width: 800px) {
+      width: 100%;
+      height: 300px;
+    }
+  }
+
+  .rightPicture {
+    background-image: url(https://nw84.github.io/Esc-Hacker-Escape-Rooms-/img/online.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 460px;
+    width: 50%;
+    @media screen and (max-width: 800px) {
+      width: 100%;
+      height: 300px;
+    }
+
+    @media screen and (min-width: 800px) {
+      order: 2;
+    }
+  }
+
+  .bottomText-container {
+    height: 460px;
+    width: 50%;
+
+    align-items: center;
+    justify-content: center;
+
+    @media screen and (max-width: 800px) {
+      width: 100%;
+      height: 300px;
+    }
+
+    .bottomText-inner-container {
+      padding: 15%;
+      @media screen and (max-width: 800px) {
+        padding: 1%;
+      }
+
+      .bottomTextHeader {
+        padding: 10px;
+      }
+
+      .bottomText {
+        padding: 10px;
+      }
+
+      .bottom-button {
+        margin-left: 10px;
+        padding: 10px 25px;
+        margin: 10px;
+        border-radius: 3%;
+        font-size: 16px;
+
+        &:hover {
+          cursor: pointer;
+          transform: scale(1.1, 1.1);
+        }
+      }
+    }
+  }
+}
+
+/* 12. Styling the footer */
+
+footer {
+  margin-top: 60px;
+  width: 100%;
+  height: 467px;
+  background-color: $black-color;
+  color: #ffffff;
+  display: flex;
+
+  @media screen and (max-width: 800px) {
+    height: 566px;
+    margin-top: 0px;
+  }
+
+  a {
+    color: #ffffff;
+  }
+
+  .footer-container {
+    justify-content: center;
+    display: flex;
+    margin-top: 4%;
+    font-size: 18px;
+    @media (max-width: 1280px) {
+      margin-top: 8%;
+      font-size: 14px;
+    }
+    @media screen and (max-width: 800px) {
+      display: block;
+      margin-top: 3%;
+    }
+
+    .footerText {
+      width: 30%;
+      margin-right: 10%;
+      padding: 50px;
+
+      @media screen and (max-width: 800px) {
+        width: 90%;
+        padding: 25px;
+      }
+    }
+
+    .footer-navbar {
+      width: 10%;
+      padding: 50px;
+      @media screen and (max-width: 800px) {
+        padding: 25px;
+        width: 30%;
+      }
+      li {
+        list-style: none;
+        padding: 1px;
+        &:nth-child(3) {
+          margin-bottom: 20px;
+        }
+        a:hover {
+          color: $main-color;
+        }
+      }
+    }
+
+    .footer-socials {
+      width: 10%;
+      padding: 50px;
+      @media screen and (max-width: 800px) {
+        padding: 25px;
+        width: 30%;
+      }
+      li {
+        list-style: none;
+        padding: 1px;
+        a:hover {
+          color: $main-color;
+        }
+      }
+    }
+
+    .footer-mainText {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+  }
+}
