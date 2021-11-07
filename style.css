@@ -40,6 +40,7 @@ a {
 .container.open {
   max-height: 100vh;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 /* 5. color styling for the buttons*/
@@ -64,6 +65,7 @@ header {
   width: 100%;
   height: 216px;
   background-color: #011827;
+  overflow: hidden;
 }
 header .headerTop-container {
   display: flex;
@@ -81,7 +83,7 @@ header .headerTop-container .logo-container {
 }
 @media screen and (max-width: 800px) {
   header .headerTop-container .logo-container {
-    margin-left: 12px;
+    margin-left: 18px;
   }
 }
 header .headerTop-container .logo-container .logoText {
@@ -188,7 +190,7 @@ header nav a:nth-child(4):hover {
 }
 
 .mobileMenu.open {
-  top: 6.5%;
+  top: 5.5%;
   right: 8%;
   animation: openMenu2 0.1s;
   animation-delay: 0.12s;
@@ -212,7 +214,7 @@ header nav a:nth-child(4):hover {
   height: 100%;
   background-color: white;
   z-index: 1501;
-  opacity: 0.4;
+  opacity: 0.5;
   animation: openMenu1 0.1s;
 }
 
@@ -233,15 +235,16 @@ header nav a:nth-child(4):hover {
   display: flex;
   position: absolute;
   margin: auto;
-  width: 90%;
+  width: 92%;
   height: 95vh;
   background-color: #011827;
   flex-direction: column;
   align-items: center;
   z-index: 1501;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
-  margin-top: 5%;
-  margin-left: 5%;
+  margin-top: 3.5%;
+  margin-left: 3.5%;
+  box-sizing: border-box;
   animation: openMenu2 0.1s;
   animation-delay: 0.12s;
   animation-fill-mode: backwards;
